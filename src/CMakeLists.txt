@@ -1,3 +1,6 @@
+# Include standard installation directory variables
+include(GNUInstallDirs)
+
 # Create the library
 add_library(conio STATIC
     utilities.cpp
@@ -8,10 +11,9 @@ add_library(Terra::conio ALIAS conio)
 
 # Make project include directory available to external projects
 target_include_directories(conio
-    PRIVATE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
     PUBLIC
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>)
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 # Specify the C++ standard to observe
 set_target_properties(conio
@@ -38,7 +40,6 @@ target_compile_options(conio
 
 # Install target and associated include files
 if(conio_INSTALL)
-    include(GNUInstallDirs)
     install(TARGETS conio EXPORT conioTargets ARCHIVE)
     install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ TYPE INCLUDE)
     install(EXPORT conioTargets

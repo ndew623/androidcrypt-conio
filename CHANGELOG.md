@@ -1,9 +1,19 @@
 # Change Log
 
+v1.0.6
+
+- CMake changes
+- Updated dependencies
+
+v1.0.5
+
+- Updated dependencies
+- CMake changes to support downstream unit testing
+
 v1.0.4
 
-- Updated to support builds additional UNIX-like systems by changing the #ifdef
-  checks with a check for \_\_unix\_\_.
+- Updated to support builds additional UNIX-like systems by changing the
+  `#ifdef` checks with a check for `__unix__`.
 
 v1.0.3
 
