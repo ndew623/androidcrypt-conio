@@ -6,8 +6,6 @@ target_link_libraries(show_progress PRIVATE Terra::conio)
 
 # Make project include directory available to external projects
 target_include_directories(show_progress
-    PRIVATE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
     PUBLIC
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>)
 
@@ -22,4 +20,4 @@ set_target_properties(show_progress
 target_compile_options(show_progress
     PRIVATE
         $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>: -Wpedantic -Wextra -Wall>
-        $<$<CXX_COMPILER_ID:MSVC>: >)
+        $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>)
